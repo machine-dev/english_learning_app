@@ -1,0 +1,102 @@
+#:set FONT_PATH '/Users/sn/Desktop/for_dev_me/english_learning_app/NotoSansJP-VariableFont_wght.ttf'
+
+ScreenManager:
+    MenuScreen:
+    WordListScreen:
+
+<MenuScreen>:
+    name: 'menu'
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [20, 20, 20, 20]  # 左、下、右、上の順にパディングを設定
+            spacing: 10  # ウィジェット間のスペースを設定
+            size_hint: None, None
+            size: 400, 400
+            TextInput:
+                id: word_input
+                hint_text: "単語"
+                font_name: FONT_PATH
+                size_hint_y: None
+                height: 40
+            TextInput:
+                id: definition_input
+                hint_text: "意味（自動取得）"
+                font_name: FONT_PATH
+                size_hint_y: None
+                height: 40
+            TextInput:
+                id: example_input
+                hint_text: "例文"
+                font_name: FONT_PATH
+                size_hint_y: None
+                height: 40
+            Button:
+                text: "追加"
+                font_name: FONT_PATH
+                size_hint_y: None
+                height: 40
+                on_press: app.add_word()
+            Button:
+                text: "単語一覧"
+                font_name: FONT_PATH
+                size_hint_y: None
+                height: 40
+                on_press: app.show_word_list()
+            Button:
+                text: "リマインダー設定"
+                font_name: FONT_PATH
+                size_hint_y: None
+                height: 40
+                on_press: app.show_reminder_popup()
+
+<WordListScreen>:
+    name: 'word_list'
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [20, 20, 20, 20]
+            spacing: 10
+            size_hint: None, None
+            size: 400, 400
+            Button:
+                text: "メニューに戻る"
+                font_name: FONT_PATH
+                size_hint_y: None
+                height: 40
+                on_press: app.show_menu()
+            ScrollView:
+                BoxLayout:
+                    id: word_list_layout
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+
+<WordBox>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: 160
+    Label:
+        text: "登録日: " + root.date_added
+        font_name: FONT_PATH
+        size_hint_y: None
+        height: 40
+    Label:
+        text: root.word
+        font_name: FONT_PATH
+        size_hint_y: None
+        height: 40
+    Label:
+        text: root.definition
+        font_name: FONT_PATH
+        size_hint_y: None
+        height: 40
+    Label:
+        text: root.example
+        font_name: FONT_PATH
+        size_hint_y: None
+        height: 40

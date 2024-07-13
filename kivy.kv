@@ -1,0 +1,22 @@
+# kvファイルの内容を追加する場合は、このように記述
+# <MainApp>:
+#     BoxLayout:
+#         orientation: 'vertical'
+#         TextInput:
+#             id: word_input
+#             hint_text: '単語'
+#         TextInput:
+#             id: definition_input
+#             hint_text: '意味（自動取得）'
+#         Button:
+#             text: '追加'
+#             on_press: app.add_word()
+#         Button:
+#             text: 'リマインダー設定'
+#             on_press: app.show_reminder_popup()
+#         ScrollView:
+#             BoxLayout:
+#                 id: word_list_layout
+#                 orientation: 'vertical'
+#                 size_hint_y: None
+#                 height: self.minimum_height
