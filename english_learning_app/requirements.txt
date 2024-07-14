@@ -1,0 +1,6 @@
+kivy
+sqlalchemy
+psycopg2-binary
+requests
+gtts
+plyer
